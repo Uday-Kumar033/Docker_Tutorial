@@ -1,0 +1,10 @@
+FROM  python
+
+WORKDIR  /myappp
+
+COPY ./sql_demo.py /myappp/
+
+RUN pip install pymysql
+RUN pip install cryptography
+
+CMD [ "python", "sql_demo.py" ]
