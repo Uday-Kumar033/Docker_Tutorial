@@ -82,7 +82,7 @@ Docker uses a client-server architecture:
 
 ---
 
-# Docker Command Overview
+## Docker Command Overview
 
 ## 🔹 1. `docker build`
 
