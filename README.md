@@ -82,9 +82,133 @@ Docker uses a client-server architecture:
 
 ---
 
-## 🛠️ How to Build a Docker Image
+# Docker Command Overview
 
-1. Create a `Dockerfile`
-2. Run:  
-   ```bash
-   docker build -t your-image-name .
+## 🔹 1. `docker build`
+
+👉 Used to build a Docker image from a **Dockerfile**.\
+- Reads instructions from `Dockerfile` and creates a container image.\
+- You can tag the image with `-t`.
+
+**Example:**
+
+``` bash
+docker build -t myapp:1.0 .
+```
+
+➡️ Builds an image named `myapp` with tag `1.0` from the current
+directory (`.`).
+
+------------------------------------------------------------------------
+
+## 🔹 2. `docker images`
+
+👉 Lists all the images available on your system.\
+- Shows repository, tag, image ID, created time, and size.
+
+**Example:**
+
+``` bash
+docker images
+```
+
+➡️ You'll see something like:
+
+    REPOSITORY   TAG   IMAGE ID       CREATED        SIZE
+    myapp        1.0   d9e6b21e10bc   2 minutes ago  132MB
+
+------------------------------------------------------------------------
+
+## 🔹 3. `docker ps`
+
+👉 Lists **running containers**.\
+- Use `-a` to see all containers (running + stopped).
+
+**Example:**
+
+``` bash
+docker ps
+docker ps -a
+```
+
+➡️ Output shows container ID, image, command, status, ports, and names.
+
+------------------------------------------------------------------------
+
+## 🔹 4. `docker network`
+
+👉 Manages **networks** for communication between containers.\
+- Types: `bridge` (default), `host`, `overlay`.\
+- Useful for multi-container setups.
+
+**Examples:**
+
+``` bash
+docker network ls            # list networks
+docker network create mynet  # create custom network
+docker network inspect mynet # see details
+docker network connect mynet mycontainer
+```
+
+------------------------------------------------------------------------
+
+## 🔹 5. `docker volume`
+
+👉 Manages **persistent storage** for containers.\
+- Volumes store data outside the container's lifecycle.\
+- Containers can share volumes.
+
+**Examples:**
+
+``` bash
+docker volume ls                # list volumes
+docker volume create myvol      # create volume
+docker run -v myvol:/data ...   # mount volume
+docker volume inspect myvol     # check details
+```
+
+------------------------------------------------------------------------
+
+## 🔹 6. `docker scout`
+
+👉 Newer Docker tool (security + analysis).\
+- Scans images for **vulnerabilities** and gives recommendations.\
+- Helps improve supply chain security.
+
+**Example:**
+
+``` bash
+docker scout quickview myapp:1.0
+```
+
+➡️ Shows vulnerabilities, outdated packages, and fixes.
+
+------------------------------------------------------------------------
+
+## 🔹 7. `docker init`
+
+👉 Creates a **starter Docker setup** for your project.\
+- Detects project type (Node, Python, Java, etc.).\
+- Generates: - `Dockerfile` - `.dockerignore` - `compose.yaml`
+
+**Example:**
+
+``` bash
+docker init
+```
+
+➡️ Walks you through prompts like language, port, and dependencies.
+
+------------------------------------------------------------------------
+
+## ✅ Summary Table
+
+  Command            Purpose
+  ------------------ ------------------------------------------
+  `docker build`     Build image from Dockerfile
+  `docker images`    List all images
+  `docker ps`        Show running containers (`-a` for all)
+  `docker network`   Manage container networks
+  `docker volume`    Manage persistent storage
+  `docker scout`     Scan images for vulnerabilities
+  `docker init`      Auto-generate Docker setup for a project
