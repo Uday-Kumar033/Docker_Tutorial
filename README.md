@@ -201,14 +201,3 @@ docker init
 
 ------------------------------------------------------------------------
 
-## ✅ Summary Table
-
-  Command            Purpose
-  ------------------ ------------------------------------------
-  `docker build`     Build image from Dockerfile
-  `docker images`    List all images
-  `docker ps`        Show running containers (`-a` for all)
-  `docker network`   Manage container networks
-  `docker volume`    Manage persistent storage
-  `docker scout`     Scan images for vulnerabilities
-  `docker init`      Auto-generate Docker setup for a project
